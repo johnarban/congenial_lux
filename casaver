@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# CASA version switcher
+
+ver=$1
+
+cd ~
+
+# delete current symlink
+
+rm -f  casa
+if [[ $ver eq 4 ]]:
+
+ln -s ~/data/casa453pipe casa
+elif [[ $ver eq 5 ]]:
+ln -s ~/data/casa561pipeline casa
+done
+

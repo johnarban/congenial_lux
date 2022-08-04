@@ -1,0 +1,17 @@
+#! /cm/local/apps/python37/bin/python
+
+import sys
+import os
+from urllib import request, parse
+
+# wget but python
+
+# get the url from command line
+url = sys.argv[1]
+
+# make sure it has https or http ://
+if not parse.urlparse(url).scheme:
+    url = 'https://' + url
+
+# get the url and put in current directory
+req = request.urlretrieve(url, os.path.basename(url))

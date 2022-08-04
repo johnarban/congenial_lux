@@ -9,11 +9,11 @@ cd $HOME
 # delete current symlink
 
 rm -f casa
-if [[ $ver eq 4 ]]:
+if [[ $ver eq 4 ]] then
     ln -s ~/data/casa453pipe casa
-elif [[ $ver eq 5 ]]:
+elif [[ $ver eq 5 ]] then
     ln -s ~/data/casa561pipe casa
-elif [[ $ver eq 6 ]]:
+elif [[ $ver eq 6 ]] then
     ln -s ~/data/casa621pipe casa
 done
 

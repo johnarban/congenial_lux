@@ -18,6 +18,6 @@ then
 elif [[ $ver -eq 6 ]] 
 then
     ln -s ~/data/casa621pipe casa
-done
+fi
 
 cd $OLDPWD

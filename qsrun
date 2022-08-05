@@ -1,0 +1,2 @@
+# open a single interactive node
+srun -N 1 --partition=windfall --account=windfall --pty bash -i

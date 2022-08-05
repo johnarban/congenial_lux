@@ -12,12 +12,18 @@ rm -f casa
 if [[ $ver -eq 4 ]] 
 then
     ln -s ~/data/casa453pipe casa
+    CASA_VERSION=4.5.3
+    export CASA_VERSION
 elif [[ $ver -eq 5 ]] 
 then
     ln -s ~/data/casa561pipe casa
+    CASA_VERSION=5.6.1
+    export CASA_VERSION
 elif [[ $ver -eq 6 ]] 
 then
     ln -s ~/data/casa621pipe casa
+    CASA_VERSION=6.2.1
+    export CASA_VERSION
 fi
 
 cd $OLDPWD

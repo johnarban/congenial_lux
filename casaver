@@ -14,16 +14,22 @@ then
     ln -s ~/data/casa453pipe casa
     CASA_VERSION=4.5.3
     export CASA_VERSION
+    rm .casa
+    ln -s ~/.casa453 .casa
 elif [[ $ver -eq 5 ]] 
 then
     ln -s ~/data/casa561pipe casa
     CASA_VERSION=5.6.1
     export CASA_VERSION
+    rm .casa
+    ln -s ~/.casa561 .casa
 elif [[ $ver -eq 6 ]] 
 then
     ln -s ~/data/casa621pipe casa
     CASA_VERSION=6.2.1
     export CASA_VERSION
+    rm .casa
+    ln -s ~/.casa621 .casa
 fi
 
 cd $OLDPWD

@@ -1,7 +1,7 @@
 rm -f $HOME/carta.log
 rm -f $HOME/carta.err
 
-srun -N 1 -o $HOME/carta.log -e $HOME/carta.err --partition=windfall --account=windfall $HOME/bin/carta_start.sh
+srun -N 1 -o $HOME/carta.log -e $HOME/carta.err --partition=windfall --account=windfall $HOME/scripts/bin/carta_start.sh
 
 sleep 2s
 

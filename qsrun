@@ -3,12 +3,11 @@
 
 
 # check if x display is available
- if [ -z "$DISPLAY" ]; then
+ if [ -z "$DISPLAY" ]
+then
     echo "No X display available, running without --x11"
     srun -N 1 --partition=windfall --account=windfall --pty bash -i
-
  else
     echo "X display available, launching interactive node"
     srun --x11 -N 1 --partition=windfall --account=windfall --pty bash -i
  fi
-

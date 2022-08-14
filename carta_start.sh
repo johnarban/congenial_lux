@@ -8,7 +8,7 @@ squeue -u joarlewi | grep carta
 
 APPIMAGE_EXTRACT_AND_RUN=1
 export APPIMAGE_EXTRACT_AND_RUN
-$HOME/CARTA-v2.0-redhat.AppImage --no_browser # >/dev/null 2>&1 &
+$HOME/CARTA-v2.0-redhat.AppImage --no_browser --exit_timeout 120 --initial_timeout 120 --idle_timeout 1200 # >/dev/null 2>&1 &
 
 sleep 2s
 

@@ -4,7 +4,7 @@
 
 # check if x display is available
  if [ -z "$DISPLAY" ]; then
-    echo "No X display available, exiting"
+    echo "No X display available, running without --x11"
     srun -N 1 --partition=windfall --account=windfall --pty bash -i
 
  else

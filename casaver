@@ -1,35 +1,61 @@
-#!/bin/bash
+#!/usr/bin/bash
 
-# CASA pipeline version switcher
 
-ver=$1
+casaversion ()  {
 
-cd $HOME
+    ver=$1
 
-# delete current symlink
+    # check if $ver is set. if not check if CASA_VERSION is set. if not show link to casa version
+    if [[ -z "$ver" ]]; then
+        if [ -z "$CASA_VERSION" ]; then
+            echo "CASA_VERSION is not set. Use casaversion X to set version"
+            echo "use casaversion 4 for casa 4.5.3"
+            echo "use casaversion 5 for casa 5.6.1"
+            echo "use casaversion 6 for casa 6.2.1"
+        else
+            echo "current version is: $CASA_VERSION"
+            ls -lht ~/casa
+            ls -lht ~/.casa
+        fi
+        return 0
+    fi
 
-rm -f casa
-if [[ $ver -eq 4 ]] 
-then
-    ln -s ~/data/casa453pipe casa
-    CASA_VERSION=4.5.3
-    export CASA_VERSION
-    rm .casa
-    ln -s ~/.casa453 .casa
-elif [[ $ver -eq 5 ]] 
-then
-    ln -s ~/data/casa561pipe casa
-    CASA_VERSION=5.6.1
-    export CASA_VERSION
-    rm .casa
-    ln -s ~/.casa561 .casa
-elif [[ $ver -eq 6 ]] 
-then
-    ln -s ~/data/casa621pipe casa
-    CASA_VERSION=6.2.1
-    export CASA_VERSION
-    rm .casa
-    ln -s ~/.casa621 .casa
-fi
+    cd $HOME
 
-cd $OLDPWD
+    # delete current symlink
+
+    rm -f casa
+    rm -f .casa
+
+    if [[ $ver -eq 4 ]]
+    then
+        CASA_VERSION=4.5.3
+        export CASA_VERSION
+        ln -sfv ~/data/casa453pipe casa
+        ln -sfv ~/.casa453 .casa
+    elif [[ $ver -eq 5 ]]
+    then
+        CASA_VERSION=5.6.1
+        export CASA_VERSION
+        ln -sfv ~/data/casa561pipe casa
+        ln -sfv ~/.casa561 .casa
+    elif [[ $ver -eq 6 ]]
+    then
+        CASA_VERSION=6.2.1
+        export CASA_VERSION
+        ln -sfv ~/data/casa621pipe casa
+        ln -sfv ~/.casa621 .casa
+    else
+        echo "invalid version"
+        return 0
+    fi
+
+
+    echo Setting CASA to verion $CASA_VERSION
+    cd $OLDPWD
+
+}
+
+
+
+casaversion $1

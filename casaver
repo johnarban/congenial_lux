@@ -22,40 +22,45 @@ casaversion ()  {
 
     cd $HOME
 
-    # delete current symlink
-
-    rm -f casa
-    rm -f .casa
-
     if [[ $ver -eq 4 ]]
     then
+        rm -f ~/casa
+        rm -f ~/.casa
         CASA_VERSION=4.5.3
         export CASA_VERSION
-        ln -sfv ~/data/casa453pipe casa
-        ln -sfv ~/.casa453 .casa
+        ln -s ~/data/casa453pipe casa
+        ln -s ~/.casa453 .casa
     elif [[ $ver -eq 5 ]]
     then
+        rm -f ~/casa
+        rm -f ~/.casa
         CASA_VERSION=5.6.1
         export CASA_VERSION
-        ln -sfv ~/data/casa561pipe casa
-        ln -sfv ~/.casa561 .casa
+        ln -s ~/data/casa561pipe casa
+        ln -s ~/.casa561 .casa
     elif [[ $ver -eq 6 ]]
     then
+        rm -f ~/casa
+        rm -f ~/.casa
         CASA_VERSION=6.2.1
         export CASA_VERSION
-        ln -sfv ~/data/casa621pipe casa
-        ln -sfv ~/.casa621 .casa
+        ln -s ~/data/casa621pipe casa
+        ln -s ~/.casa621 .casa
     else
         echo "invalid version"
+        echo "current CASA_VERSION is: $CASA_VERSION"
+        echo "current links are"
+        ls -lht ~/casa
+        ls -lht ~/.casa
         return 0
     fi
 
 
     echo Setting CASA to verion $CASA_VERSION
+    ls -lht ~/casa
+    ls -lht ~/.casa
     cd $OLDPWD
 
 }
 
 
-
-casaversion $1

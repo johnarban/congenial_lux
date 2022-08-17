@@ -12,6 +12,9 @@ casaversion ()  {
             echo "use casaversion 4 for casa 4.5.3"
             echo "use casaversion 5 for casa 5.6.1"
             echo "use casaversion 6 for casa 6.2.1"
+            echo "Current links to casa versions:"
+            ls -lht ~/casa
+            ls -lht ~/.casa
         else
             echo "current version is: $CASA_VERSION"
             ls -lht ~/casa
@@ -57,8 +60,8 @@ casaversion ()  {
 
 
     echo Setting CASA to verion $CASA_VERSION
-    ls -lht ~/casa
-    ls -lht ~/.casa
+    # ls -lht ~/casa
+    # ls -lht ~/.casa
     cd $OLDPWD
 
 }

@@ -9,9 +9,11 @@ casaversion ()  {
     if [[ -z "$ver" ]]; then
         if [ -z "$CASA_VERSION" ]; then
             echo "CASA_VERSION is not set. Use casaversion X to set version"
-            echo "use casaversion 4 for casa 4.5.3"
-            echo "use casaversion 5 for casa 5.6.1"
-            echo "use casaversion 6 for casa 6.2.1"
+            echo "use casaversion 4 for casa 4.5.3 (pipeline)"
+            echo "use casaversion 5 for casa 5.6.1 (pipeline)"
+            echo "use casaversion 6 for casa 6.2.1 (pipeline)"
+            echo "use casaversion 56 for casa 5.6.0 (non pipeline)"
+            echo "use casaversion 65 for casa 6.5.1 (non pipeline)"
             echo "Current links to casa versions:"
             ls -lht ~/casa
             ls -lht ~/.casa
@@ -49,6 +51,22 @@ casaversion ()  {
         export CASA_VERSION
         ln -s ~/data/casa621pipe casa
         ln -s ~/.casa621 .casa
+    elif [[ $ver -eq 56 ]]
+    then
+        rm -f ~/casa
+        rm -f ~/.casa
+        CASA_VERSION=5.6.0
+        export CASA_VERSION
+        ln -s ~/data/casa560nopipe casa
+        ln -s ~/.casa560 .casa
+    elif [[ $ver -eq 65 ]]
+    then
+        rm -f ~/casa
+        rm -f ~/.casa
+        CASA_VERSION=6.5.1
+        export CASA_VERSION
+        ln -s ~/data/casa-6.5.1-23-py3.8 casa
+        ln -s ~/.casa651 .casa
     else
         echo "invalid version"
         echo "current CASA_VERSION is: $CASA_VERSION"

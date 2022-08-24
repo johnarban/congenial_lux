@@ -2,4 +2,4 @@ rm -f $HOME/carta.log
 rm -f $HOME/carta.err
 
 # srun -N 1 -o $HOME/carta.log -e $HOME/carta.err --partition=windfall --account=windfall $HOME/scripts/carta_start.sh
-srun -N 1 --partition=windfall --account=windfall $HOME/scripts/carta_start.sh
+srun -N 1 --partition=windfall --account=windfall --pty bash -i

@@ -14,6 +14,7 @@ casaversion ()  {
             echo "use casaversion 6 for casa 6.2.1 (pipeline)"
             echo "use casaversion 56 for casa 5.6.0 (non pipeline)"
             echo "use casaversion 65 for casa 6.5.1 (non pipeline)"
+            echo "use casaversion 46 for casa 4.6.0 (non pipeline)"
             echo "Current links to casa versions:"
             ls -lht ~/casa
             ls -lht ~/.casa
@@ -67,6 +68,15 @@ casaversion ()  {
         export CASA_VERSION
         ln -s ~/data/casa-6.5.1-23-py3.8 casa
         ln -s ~/.casa651 .casa
+    elif [[ $ver -eq 46 ]]
+    then
+        rm -f ~/casa
+        rm -f ~/.casa
+        CASA_VERSION=4.6.0
+        export CASA_VERSION
+        ln -s ~/data/casa-release-4.6.0-el5 casa
+        ln -s ~/.casa460 .casa
+
     else
         echo "invalid version"
         echo "current CASA_VERSION is: $CASA_VERSION"

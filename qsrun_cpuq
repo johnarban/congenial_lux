@@ -1,0 +1,13 @@
+#! /usr/bin/bash
+# open a single interactive node
+
+
+# check if x display is available
+ if [ -z "$DISPLAY" ]
+then
+    echo "No X display available, running without --x11"
+    srun -N 1 --partition=cpuq --account=cpuq --pty bash -i
+ else
+    echo "X display available, launching interactive node"
+    srun --x11 -N 1 --partition=cpuq --account=cpuq --pty bash -i
+ fi

@@ -1,106 +1,105 @@
 #!/usr/bin/bash
 
 
-casaversion ()  {
 
-    ver=$1
 
-    # check if $ver is set. if not check if CASA_VERSION is set. if not show link to casa version
-    if [[ -z "$ver" ]]; then
-        if [ -z "$CASA_VERSION" ]; then
-            echo "CASA_VERSION is not set. Use casaversion X to set version"
-            echo "use casaversion 4 for casa 4.5.3 (pipeline)"
-            echo "use casaversion 5 for casa 5.6.1 (pipeline)"
-            echo "use casaversion 6 for casa 6.2.1 (pipeline)"
-            echo "use casaversion 56 for casa 5.6.0 (non pipeline)"
-            echo "use casaversion 65 for casa 6.5.1 (non pipeline)"
-            # echo "use casaversion 46 for casa 4.6.0 (non pipeline)"
-            echo "use casaversion 47 for casa 4.7.2 (non pipeline)"
-            echo "Current links to casa versions:"
-            ls -lht ~/casa
-            ls -lht ~/.casa
-        else
-            echo "current version is: $CASA_VERSION"
-            ls -lht ~/casa
-            ls -lht ~/.casa
-        fi
-        return 0
-    fi
+ver=$1
 
-    cd $HOME
-
-    if [[ $ver -eq 4 ]]
-    then
-        rm -f ~/casa
-        rm -f ~/.casa
-        CASA_VERSION=4.5.3
-        export CASA_VERSION
-        ln -s ~/data/casa453pipe casa
-        ln -s ~/.casa453 .casa
-    elif [[ $ver -eq 5 ]]
-    then
-        rm -f ~/casa
-        rm -f ~/.casa
-        CASA_VERSION=5.6.1
-        export CASA_VERSION
-        ln -s ~/data/casa561pipe casa
-        ln -s ~/.casa561 .casa
-    elif [[ $ver -eq 6 ]]
-    then
-        rm -f ~/casa
-        rm -f ~/.casa
-        CASA_VERSION=6.2.1
-        export CASA_VERSION
-        ln -s ~/data/casa621pipe casa
-        ln -s ~/.casa621 .casa
-    elif [[ $ver -eq 56 ]]
-    then
-        rm -f ~/casa
-        rm -f ~/.casa
-        CASA_VERSION=5.6.0
-        export CASA_VERSION
-        ln -s ~/data/casa560nopipe casa
-        ln -s ~/.casa560 .casa
-    elif [[ $ver -eq 65 ]]
-    then
-        rm -f ~/casa
-        rm -f ~/.casa
-        CASA_VERSION=6.5.1
-        export CASA_VERSION
-        ln -s ~/data/casa-6.5.1-23-py3.8 casa
-        ln -s ~/.casa651 .casa
-    elif [[ $ver -eq 46 ]]
-    then
-        echo "WARNING CASA 4.6.0 is broken"
-        rm -f ~/casa
-        rm -f ~/.casa
-        CASA_VERSION=4.6.0
-        export CASA_VERSION
-        ln -s ~/data/casa-release-4.6.0-el5 casa
-        ln -s ~/.casa460 .casa
-    elif [[ $ver -eq 47 ]]
-    then
-        rm -f ~/casa
-        rm -f ~/.casa
-        CASA_VERSION=4.7.2
-        export CASA_VERSION
-        ln -s ~/data/casa-release-4.7.2-el7 casa
-        ln -s ~/.casa472 .casa
-    else
-        echo "invalid version"
-        echo "current CASA_VERSION is: $CASA_VERSION"
-        echo "current links are"
+# check if $ver is set. if not check if CASA_VERSION is set. if not show link to casa version
+if [[ -z "$ver" ]]; then
+    if [ -z "$CASA_VERSION" ]; then
+        echo "CASA_VERSION is not set. Use casaversion X to set version"
+        echo "use casaversion 4 for casa 4.5.3 (pipeline)"
+        echo "use casaversion 5 for casa 5.6.1 (pipeline)"
+        echo "use casaversion 6 for casa 6.2.1 (pipeline)"
+        echo "use casaversion 56 for casa 5.6.0 (non pipeline)"
+        echo "use casaversion 65 for casa 6.5.1 (non pipeline)"
+        # echo "use casaversion 46 for casa 4.6.0 (non pipeline)"
+        echo "use casaversion 47 for casa 4.7.2 (non pipeline)"
+        echo "Current links to casa versions:"
         ls -lht ~/casa
         ls -lht ~/.casa
-        return 0
+    else
+        echo "current version is: $CASA_VERSION"
+        ls -lht ~/casa
+        ls -lht ~/.casa
     fi
+    return 0
+fi
+
+cd $HOME
+
+if [[ $ver -eq 4 ]]
+then
+    rm -f ~/casa
+    rm -f ~/.casa
+    CASA_VERSION=4.5.3
+    export CASA_VERSION
+    ln -s ~/data/casa453pipe casa
+    ln -s ~/.casa453 .casa
+elif [[ $ver -eq 5 ]]
+then
+    rm -f ~/casa
+    rm -f ~/.casa
+    CASA_VERSION=5.6.1
+    export CASA_VERSION
+    ln -s ~/data/casa561pipe casa
+    ln -s ~/.casa561 .casa
+elif [[ $ver -eq 6 ]]
+then
+    rm -f ~/casa
+    rm -f ~/.casa
+    CASA_VERSION=6.2.1
+    export CASA_VERSION
+    ln -s ~/data/casa621pipe casa
+    ln -s ~/.casa621 .casa
+elif [[ $ver -eq 56 ]]
+then
+    rm -f ~/casa
+    rm -f ~/.casa
+    CASA_VERSION=5.6.0
+    export CASA_VERSION
+    ln -s ~/data/casa560nopipe casa
+    ln -s ~/.casa560 .casa
+elif [[ $ver -eq 65 ]]
+then
+    rm -f ~/casa
+    rm -f ~/.casa
+    CASA_VERSION=6.5.1
+    export CASA_VERSION
+    ln -s ~/data/casa-6.5.1-23-py3.8 casa
+    ln -s ~/.casa651 .casa
+elif [[ $ver -eq 46 ]]
+then
+    echo "WARNING CASA 4.6.0 is broken"
+    rm -f ~/casa
+    rm -f ~/.casa
+    CASA_VERSION=4.6.0
+    export CASA_VERSION
+    ln -s ~/data/casa-release-4.6.0-el5 casa
+    ln -s ~/.casa460 .casa
+elif [[ $ver -eq 47 ]]
+then
+    rm -f ~/casa
+    rm -f ~/.casa
+    CASA_VERSION=4.7.2
+    export CASA_VERSION
+    ln -s ~/data/casa-release-4.7.2-el7 casa
+    ln -s ~/.casa472 .casa
+else
+    echo "invalid version"
+    echo "current CASA_VERSION is: $CASA_VERSION"
+    echo "current links are"
+    ls -lht ~/casa
+    ls -lht ~/.casa
+    return 0
+fi
 
 
-    echo Setting CASA to verion $CASA_VERSION
-    # ls -lht ~/casa
-    # ls -lht ~/.casa
-    cd $OLDPWD
+echo Setting CASA to verion $CASA_VERSION
+# ls -lht ~/casa
+# ls -lht ~/.casa
+cd $OLDPWD
 
-}
 
 

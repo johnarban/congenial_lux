@@ -43,5 +43,3 @@ starlink () { #function to add starlink to path
         source $STARLINK_DIR/etc/profile
     fi
 }
-
-source ~/scripts/casaver

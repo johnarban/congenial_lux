@@ -7,17 +7,17 @@ fi
 
 # load modules
 # module load slurm # pre-loaded in default .bashrc
-# module load python/3.8.6 # this is currently needed for jupyter notebooks
 module load openmpi  # for mpi
 
-
-source ~/.bash_aliases
-source ~/.bash_functions
+alias rm='rm -i'
 
 # User specific environment and startup programs
+# The PATH is searched beginning to end
+# so programs in directories placed first 
+# take precedence over those that come after
 PATH=$HOME/.local/bin:$PATH
 PATH=$PATH:$HOME/casa/bin
-PATH=$PATH:$HOME/scripts
+PATH=$PATH:$HOME/scripts 
 export PATH
 
 CASAPATH=$HOME/casa/bin
@@ -29,17 +29,8 @@ export LD_LIBRARY_PATH
 MANPATH=$MANPATH:$HOME/.local/share/man
 export MANPATH
 
+# this is needed to run RedHat AppImages
+# such as CARTA. Unfortunately, this does not fix
+# the issue with running plotms in CASA ver>6
 APPIMAGE_EXTRACT_AND_RUN=1
 export APPIMAGE_EXTRACT_AND_RUN
-
-
-
-# starlink eao installation
-echo "To run starlink programs run <<starlink>> in the terminal"
-echo "this may break programs like CASA. So be sure to run in it's own terminal"
-starlink () { #function to add starlink to path
-    if [ -z "$STARLINK_DIR" ]; then
-        export STARLINK_DIR=/home/joarlewi/star-2021A
-        source $STARLINK_DIR/etc/profile
-    fi
-}

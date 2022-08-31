@@ -24,7 +24,7 @@ if [[ -z "$ver" ]]; then
         ls -lht ~/casa
         ls -lht ~/.casa
     fi
-    return 0
+    exit
 fi
 
 cd $HOME

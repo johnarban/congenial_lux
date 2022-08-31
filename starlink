@@ -1,10 +1,16 @@
 #!/usr/bin/bash
 
-# starlink eao installation
-echo "To run starlink programs run <<starlink>> in the terminal"
-echo "this may break programs like CASA. So be sure to run in it's own terminal"
-# add starlink to path
-if [ -z "$STARLINK_DIR" ]; then
-    export STARLINK_DIR=/home/joarlewi/star-2021A
-    source $STARLINK_DIR/etc/profile
+# check if "lux" is in hostname
+if [[ $HOSTNAME == *"lux"* ]]; then
+    echo "WARNING:  You are on the login node"
+    echo "*******:  starlink will not be be available on compute nodes."
+    echo "*******:  If you intend to use starlink from a compute node, "
+    echo "*******:  please run the script while on the compute node"
+else
+    echo "You are not on the lux cluster"
+    echo "Starlink not installed"
 fi
+
+# add starlink to path
+export STARLINK_DIR=/home/joarlewi/star-2021A
+source $STARLINK_DIR/etc/profile

@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+
 # check if "lux" is in hostname
 if [[ $HOSTNAME == *"lux"* ]]; then
     echo "WARNING:  You are on the login node"

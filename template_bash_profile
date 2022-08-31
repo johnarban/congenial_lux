@@ -1,23 +1,32 @@
 # .bash_profile
-echo "Run John's .bash_profile"
+echo "Running .bash_profile"
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
 
+# IMPROVE BASH HISTORY
+# shopt -s histappend  # append to history instead of rewriting. enabled by default
+# save more lines of history; default is 1000
+HISTFILESIZE=10000
+HISTSIZE=10000
+HISTCONTROL=ignoredups # ignore duplicate items
+
 # load modules
 # module load slurm # pre-loaded in default .bashrc
 module load openmpi  # for mpi
+# module load python37 # recommend python37 so that any virtual env is operable with the lux jupyter hub
 
-alias rm='rm -i'
+# beware: aliases do not survive logging into the compute node
+alias rm='rm -i' # interactive rm
 
 # User specific environment and startup programs
 # The PATH is searched beginning to end
-# so programs in directories placed first 
+# so programs in directories placed first
 # take precedence over those that come after
 PATH=$HOME/.local/bin:$PATH
 PATH=$PATH:$HOME/casa/bin
-PATH=$PATH:$HOME/scripts 
+PATH=$PATH:$HOME/scripts
 export PATH
 
 CASAPATH=$HOME/casa/bin

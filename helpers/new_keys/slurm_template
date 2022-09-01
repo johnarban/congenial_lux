@@ -1,0 +1,19 @@
+#!/bin/bash
+#SBATCH --job-name=job_name     # unique job nae
+#SBATCH --partition=gpuq     # choose from windfall, cpuq, gpuq
+#SBATCH --account=gpuq     # choose from windfall, cpuq, gpuq
+#SBATCH --mail-type=END,FAIL     # Type of email notification- BEGIN,END,FAIL,ALL
+#SBATCH --mail-user=joarlewi@ucsc.edu
+#SBATCH --ntasks=1
+#SBATCH --nodes=1
+#SBATCH --output=split_concat2.log  # send terminal output to this file
+#SBATCH -D /home/joarlewi/data/ngc625_hunt/working/  # set starting directory.
+
+# print out some basic information at beginning of run
+pwd; hostname; date
+
+echo "Running program on $SLURM_JOB_NUM_NODES nodes with $SLURM_NTASKS total tasks"
+
+# program you want to run
+/home/joarlewi/data/casa-6.5.1-23-py3.8/bin/casa --nologger --log2term --nogui -c some_casa_script.py
+

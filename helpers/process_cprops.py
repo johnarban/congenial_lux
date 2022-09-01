@@ -92,7 +92,7 @@ cubefiles = ["../imaging/he210/he210_12m_co32_co10.fits",
 cubefile = cubefiles[0]
 
 
-distance = get_distance("/home/joarlewi/data/andes/new_keys/distance_key.txt", cubefile.split('/')[-2])
+distance = get_distance("~/andes/new_keys/distance_key.txt", cubefile.split('/')[-2])
 
 np.asscalar = np.ndarray.item
 

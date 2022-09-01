@@ -1,0 +1,5 @@
+ClumpFind.AllowEdge=0
+ClumpFind.DeltaT=2*RMS
+ClumpFind.IDLAlg=1
+ClumpFind.MinPix=20
+ClumpFind.Tlow=3*RMS

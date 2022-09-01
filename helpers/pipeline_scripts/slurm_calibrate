@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --job-name=cal_sextans_a
+#SBATCH --partition=cpuq
+#SBATCH --account=cpuq
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=joarlewi@ucsc.edu
+#SBATCH --ntasks=1
+#SBATCH --nodes=1
+#SBATCH --output=mpi_test_casa.log
+#SBATCH -D /data/users/joarlewi/sextansA2018/script
+pwd; hostname; date
+
+echo "Running program on $SLURM_JOB_NUM_NODES nodes with $SLURM_NTASKS total tasks"
+
+/home/joarlewi/casa/bin/casa --pipeline --nologger --log2term --nogui -c casascript.py
+

@@ -1,0 +1,12 @@
+# %ECSV 0.9
+# ---
+# datatype:
+# - {name: target, datatype: string}
+# - {name: dist, datatype: float32}
+# delimiter: ','
+# schema: astropy-2.0
+target,dist
+ngc625,3.9
+sextansA_1,1.43
+he210,13
+

@@ -25,7 +25,7 @@ def parse_name(path):
 if os.environ.get('STARLINK_DIR') is not None:
     starlink.wrapper.change_starpath(os.environ.get('STARLINK_DIR'))
 else:
-    starlink.wrapper.change_starpath('/home/joarlewi/star-2021A')
+    starlink.wrapper.change_starpath('[USER_SUPPLIED_DIRECTORY]')
 
 
 

@@ -2,14 +2,13 @@
 
 
 # check if "lux" is in hostname
-if [[ $HOSTNAME == *"lux"* ]]; then
+if [[ $(hostname) == *"lux"* ]]; then
     echo "WARNING:  You are on the login node"
     echo "*******:  starlink will not be be available on compute nodes."
     echo "*******:  If you intend to use starlink from a compute node, "
     echo "*******:  please run the script while on the compute node"
 else
-    echo "You are not on the lux cluster"
-    echo "Starlink not installed"
+    echo "you are on $(hostname)"
 fi
 
 # add starlink to path

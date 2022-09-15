@@ -3,7 +3,7 @@
 #   Helper functions
 # ------------------------------------------------------------------------------
 
-# use grep and sed to extract url from log
+# use grep and sed to extract urls from log
 # usage: extract_url <log_file>
 extract_url() {
     # from https://superuser.com/a/686530

@@ -1,2 +1,4 @@
 #!/usr/bin/bash
-squeue -u joarlewi
+
+# checks the queue for the current user
+squeue -u $(whoami)

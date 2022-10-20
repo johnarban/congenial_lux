@@ -10,6 +10,7 @@
 ## Files
 - `findclumps.py` 
   - batch run STARLINK findclumps using the starlink python wrapper [starlink-pywrapper](https://starlink-pywrapper.readthedocs.io/en/latest/)
+  - a config file ([config.cf](https://github.com/johnarban/congenial_lux/blob/main/helpers/config.cf)) can be found in the helpers subfolder
   
 - `process_cprops.py`
     - batch run cprops for a series of ALMA images. 

@@ -34,10 +34,11 @@ from phangsPipeline import phangsLogger as pl
 reload(pl)
 # will overwrite the log file each time
 
-# filename with timestamp in formatat pipeline_YYYYMMDD_HHMMSS.log in utc time
-now = datetime.datetime.utcnow()
-logname = 'pipeline_%s.log' % now.strftime('%Y%m%d_%H%M%S')
-pl.setup_logger(level='DEBUG', logfile='/abs/path/to/keep/log/{}'.format(logname))
+# for logging use phangePipeline from https://github.com/johnarban/phangs_imaging_scripts
+# logging is the only change, otherwise not log will be saved
+# now = datetime.datetime.utcnow()
+# logname = 'pipeline_%s.log' % now.strftime('%Y%m%d_%H%M%S')
+# pl.setup_logger(level='DEBUG', logfile='/abs/path/to/keep/log/{}'.format(logname))
 
 # Imports
 

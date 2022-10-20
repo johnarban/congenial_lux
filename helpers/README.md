@@ -6,6 +6,10 @@
   - key files for running the pipeline on lux. These can be found in `/data/users/joarlewis/andes/`
   - I run the pipeline from within the `andes` directory. This creates the `imaging/` and `derived/` (and other `phangsPipeline` output) subfolders.
 
+- `pipeline_scripts`
+  - a couple scripts for running the CASA pipeline via a slurm job. Includes a little SLURM template, and a little python file which helps automatically find the files to run. In general `casascript.py` could simply be a file which includes `execfile(scriptforPI.py)` in it, or else the CASA command in the slurm template can directly point to the `scriptforPI` but this would not allow setting the `SPACESAVING` flag.
+
+
 ## Files
 - `findclumps.py` 
   - batch run STARLINK findclumps using the starlink python wrapper [starlink-pywrapper](https://starlink-pywrapper.readthedocs.io/en/latest/)

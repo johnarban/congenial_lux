@@ -7,17 +7,19 @@
 # Load routines, initialize handlers
 ##############################################################################
 
-import os, sys
+import os, sys, datetime
 from importlib import reload
 
 
 # Locate the master key
-key_file = '/home/joarlewi/data/andes/new_keys/master_key.txt'
+
+key_file = '/abs/path/to/andes/new_keys/master_key.txt'
 
 # Set directory for the pipeline and change to this directory
-pipedir = '/home/joarlewi/phangs_imaging_scripts/'
+pipedir = '/abs/path/to/phangs_imaging_scripts/'
 
-sys.path.append('/home/joarlewi/data/casapy/analysis_scripts/')
+# casa analysis scripts
+sys.path.append('/abs/path/to/analysis_scripts/')
 os.chdir(pipedir)
 
 # Make sure we are inside CASA (modify this to use the command line version)
@@ -30,7 +32,12 @@ sys.path.append(os.getcwd())
 # Set the logging
 from phangsPipeline import phangsLogger as pl
 reload(pl)
-pl.setup_logger(level='DEBUG', logfile='/home/joarlewi/data/andes/pipeline.log')
+# will overwrite the log file each time
+
+# filename with timestamp in formatat pipeline_YYYYMMDD_HHMMSS.log in utc time
+now = datetime.datetime.utcnow()
+logname = 'pipeline_%s.log' % now.strftime('%Y%m%d_%H%M%S')
+pl.setup_logger(level='DEBUG', logfile='/abs/path/to/keep/log/{}'.format(logname))
 
 # Imports
 

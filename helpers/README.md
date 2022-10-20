@@ -4,6 +4,7 @@
 
 - `new_keys`
   - key files for running the pipeline on lux. These can be found in `/data/users/joarlewis/andes/`
+    - also contains a copy of `run_andes.py` which should be places in the parent directory of `new_keys`
   - I run the pipeline from within the `andes` directory. This creates the `imaging/` and `derived/` (and other `phangsPipeline` output) subfolders.
 
 ## Files

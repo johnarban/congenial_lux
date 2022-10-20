@@ -12,5 +12,5 @@ pwd; hostname; date
 
 echo "Running program on $SLURM_JOB_NUM_NODES nodes with $SLURM_NTASKS total tasks"
 
-/home/joarlewi/casa/bin/casa --pipeline --nologger --log2term --nogui -c casascript.py
+casa --pipeline --nologger --log2term --nogui -c casascript.py
 

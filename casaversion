@@ -1,6 +1,12 @@
 #!/usr/bin/bash
 
-
+# this just a short example
+# filename: casaversion
+# example usage
+# :: casaversion
+#       returns the current active version and the symlink paths
+# :: casaversion X
+#       sets the casa version if a valid version is given
 
 
 ver=$1
@@ -29,13 +35,19 @@ fi
 
 cd $HOME
 
+# set this to point to where your casa versions are.
+# if necessary, you can change each path individually if they
+# are not all under the same root directory.
+SOFTWARE = $HOME/data #change for a different users.
+
+
 if [[ $ver -eq 4 ]]
 then
     rm -f ~/casa
     rm -f ~/.casa
     CASA_VERSION=4.5.3
     export CASA_VERSION
-    ln -s ~/data/casa453pipe casa
+    ln -s $SOFTWARE/casa453pipe casa
     ln -s ~/.casa453 .casa
 elif [[ $ver -eq 5 ]]
 then
@@ -43,7 +55,7 @@ then
     rm -f ~/.casa
     CASA_VERSION=5.6.1
     export CASA_VERSION
-    ln -s ~/data/casa561pipe casa
+    ln -s $SOFTWARE/casa561pipe casa
     ln -s ~/.casa561 .casa
 elif [[ $ver -eq 6 ]]
 then
@@ -51,7 +63,7 @@ then
     rm -f ~/.casa
     CASA_VERSION=6.2.1
     export CASA_VERSION
-    ln -s ~/data/casa621pipe casa
+    ln -s $SOFTWARE/casa621pipe casa
     ln -s ~/.casa621 .casa
 elif [[ $ver -eq 56 ]]
 then
@@ -59,7 +71,7 @@ then
     rm -f ~/.casa
     CASA_VERSION=5.6.0
     export CASA_VERSION
-    ln -s ~/data/casa560nopipe casa
+    ln -s $SOFTWARE/casa560nopipe casa
     ln -s ~/.casa560 .casa
 elif [[ $ver -eq 65 ]]
 then
@@ -67,7 +79,7 @@ then
     rm -f ~/.casa
     CASA_VERSION=6.5.1
     export CASA_VERSION
-    ln -s ~/data/casa-6.5.1-23-py3.8 casa
+    ln -s $SOFTWARE/casa-6.5.1-23-py3.8 casa
     ln -s ~/.casa651 .casa
 elif [[ $ver -eq 46 ]]
 then
@@ -76,7 +88,7 @@ then
     rm -f ~/.casa
     CASA_VERSION=4.6.0
     export CASA_VERSION
-    ln -s ~/data/casa-release-4.6.0-el5 casa
+    ln -s $SOFTWARE/casa-release-4.6.0-el5 casa
     ln -s ~/.casa460 .casa
 elif [[ $ver -eq 47 ]]
 then
@@ -84,7 +96,7 @@ then
     rm -f ~/.casa
     CASA_VERSION=4.7.2
     export CASA_VERSION
-    ln -s ~/data/casa-release-4.7.2-el7 casa
+    ln -s $SOFTWARE/casa-release-4.7.2-el7 casa
     ln -s ~/.casa472 .casa
 else
     echo "invalid version"

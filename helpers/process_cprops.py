@@ -21,8 +21,7 @@ def mad_std(x):
 
 
 def estimate_noise(emission_file):
-     with fits.open(emission_file) as hdu:
-        
+    with fits.open(emission_file) as hdu:
         # use MAD std as noise level
         print("========= estimaing noise level ========")
         x = hdu[0].data[np.isfinite(hdu[0].data)]
@@ -94,6 +93,7 @@ cubefile = cubefiles[0]
 
 distance = get_distance("~/andes/new_keys/distance_key.txt", cubefile.split('/')[-2])
 
+# needed because of some deprecation errors
 np.asscalar = np.ndarray.item
 
 pycprops.fits2props(cubefile,
@@ -101,7 +101,7 @@ pycprops.fits2props(cubefile,
                     distance=distance * u.Mpc,
                     asgnname=cubefile.split('/')[-1].replace('.fits','_new.asgn.fits'),
                     propsname=cubefile.split('/')[-1].replace('.fits','_new.props.fits'),
-                    allow_huge = True,
-                    alphaCO=1,
+                    allow_huge=True,
+                    alphaCO=1, # just give me luminosity and ignore the bad units it gives you.
                    )
 

@@ -3,19 +3,19 @@
 
 import analysisUtils as au
 
-# Get the system velocity for the field
-
-# Get the phase center for the field
-
-# get bandwidth for the SPW in velocity
-
-measurement_set = 'calibrated.ms'
-
-au.radialVelocity('measurement_set','NGC_625')
-# 14/74: coord = au.getPhaseCenterForField('measurement_set','NGC_625')
-# au.tcleanVelocityParameters('measurement_set')
-# a = au.pickCellSize('measurement_set',spw='3',npix=6,imsize=True)
 measurement_set = 'calibrated.ms'
 field = 'NGC_625'
+spw = '3'  # pick the right SPW for your data. should be a string
+npix = 6   # how many pixels to sample the beam
 
+# source radial velocity so you can defined channel parameters using line freqnecy
+radvel = au.radialVelocity(measurement_set, field)
 
+# get the phase center. use this when imaging a mosaic too
+coord = au.getPhaseCenterForField(measurement_set, field)
+
+# retuns a dictionary
+vel_params = au.tcleanVelocityParameters(measurement_set)
+
+# cells size is found by the pipeline, but this is useful for imaging by hand
+cells_size = au.pickCellSize(measurement_set, spw=spw, npix=npix, imsize=True)
